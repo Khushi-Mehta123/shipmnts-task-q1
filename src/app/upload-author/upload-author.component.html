@@ -8,7 +8,7 @@
     <button type="submit" class="btn btn-primary">Upload Author Data</button>
   </form>
 
-  <div *ngIf="tableData.length">
+  <div *ngIf="authorData.length">
     <h3>Preview Data</h3>
     <table class="table table-striped">
       <thead>
@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of tableData">
+        <tr *ngFor="let row of authorData">
           <td>{{ row.Name }}</td>
           <td>{{ row.Email }}</td>
           <td>{{ row.DateOfBirth }}</td>

@@ -7,7 +7,7 @@ import * as XLSX from 'xlsx';
   styleUrl: './upload-books.component.scss'
 })
 export class UploadBooksComponent {
-  tableData: any[] = [];
+  bookData: any[] = [];
 
   onFileChange(event: any) {
     const target: DataTransfer = <DataTransfer>(event.target);
@@ -23,19 +23,48 @@ export class UploadBooksComponent {
 
       const data = <any[][]>XLSX.utils.sheet_to_json(ws, { header: 1 });
 
-      this.tableData = data.slice(1).map(row => ({
-        bookName: row[0],
-        isbn: row[1],
-        authorID : row[2]
-      }));
+      const errors: string[] = [];
+
+      this.bookData = data.slice(1).map((row, index) => {
+        const bookName = row[0];
+        const isbn = row[1];
+        const authorId = row[2];
+
+        if (!bookName || !isbn || !authorId) {
+          errors.push(`Row ${index + 2}: Missing data for bookName, isbn, or authorId`);
+        }
+
+        if (!this.isValidISBN(isbn)) {
+          errors.push(`Row ${index + 2}: Invalid ISBN format (${isbn})`);
+        }
+
+        return {
+          bookName: bookName,
+          isbn: isbn,
+          authorId: authorId
+        };
+      });
+
+      if (errors.length > 0) {
+        this.bookData = [];
+        console.error('Validation Errors:', errors);
+        alert('Validation Errors:\n' + errors.join('\n'));
+      } else {
+        console.log('Valid data:', this.bookData);
+      }
     };
     reader.readAsBinaryString(target.files[0]);
   }
 
+  isValidISBN(isbn: string): boolean {
+    const isbnPattern = /^(97(8|9))?\d{9}(\d|X)$/;
+    return isbnPattern.test(isbn);
+  }
+
   onUpload() {
-    if (this.tableData.length) {
+    if (this.bookData.length) {
       // Here, you would send this.tableData to the backend for validation and storage
-      console.log('Data ready for upload:', this.tableData);
+      console.log('Data ready for upload:', this.bookData);
       alert('Data uploaded successfully!');
     } else {
       alert('Please upload a valid Excel file.');
