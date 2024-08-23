@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-upload-books',
@@ -8,6 +9,7 @@ import * as XLSX from 'xlsx';
 })
 export class UploadBooksComponent {
   bookData: any[] = [];
+constructor(private _api:ServiceService){}
 
   onFileChange(event: any) {
     const target: DataTransfer = <DataTransfer>(event.target);
@@ -65,6 +67,7 @@ export class UploadBooksComponent {
     if (this.bookData.length) {
       // Here, you would send this.tableData to the backend for validation and storage
       console.log('Data ready for upload:', this.bookData);
+      this._api.postAuthors(this.bookData).subscribe();
       alert('Data uploaded successfully!');
     } else {
       alert('Please upload a valid Excel file.');
