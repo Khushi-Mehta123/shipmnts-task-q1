@@ -1,27 +1,16 @@
-# UploadExcel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
+Project name : UploadExcel
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project consists of a front-end Angular application and a back-end Node.js/Express server. The front-end application allows users to upload Excel files containing book and author data. The back-end server processes and stores this data in a MongoDB database.
 
-## Code scaffolding
+## Front-End Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Navigate to the Front-End Directory:**
 
-## Build
+   ```bash
+   cd C:\Users\Khushi Mehta\OneDrive\Documents\shipmnts\shipmnts-q1\UploadExcel>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. **Navigate to the Backend-End Directory:**
+    cd C:\Users\Khushi Mehta\OneDrive\Documents\shipmnts\shipmnts-q1\UploadExcel\backend-uploadexcel>
