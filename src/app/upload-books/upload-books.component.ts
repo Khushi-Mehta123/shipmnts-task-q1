@@ -59,8 +59,7 @@ constructor(private _api:ServiceService){}
   }
 
   isValidISBN(isbn: string): boolean {
-    const isbnPattern = /^(97(8|9))?\d{9}(\d|X)$/;
-    return isbnPattern.test(isbn);
+    return isbn.length > 9;
   }
 
   onUpload() {
