@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Upload Excel File</h2>
+  <form (submit)="onUpload()">
+    <div class="form-group">
+      <label for="file">Select Excel File:</label>
+      <input type="file" id="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+
+  <div *ngIf="tableData.length">
+    <h3>Preview Data</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Book Name</th>
+          <th>ISBN Code</th>
+          <th>Author ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData">
+          <td>{{ row.bookName }}</td>
+          <td>{{ row.isbn }}</td>
+          <td>{{ row.authorID }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
