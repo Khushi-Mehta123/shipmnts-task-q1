@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class UploadComponent {
 
+
   uploadAuthorData() {
     // Logic to upload author data
     console.log('Author data upload initiated');
+
   }
 
   uploadBookData() {

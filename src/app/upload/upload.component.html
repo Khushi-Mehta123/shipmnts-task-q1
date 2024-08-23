@@ -1,11 +1,14 @@
 
-<div class="button-container">
-  <button class="upload-button author-upload" (click)="uploadAuthorData()">Upload Author Data</button>
 
-  
-  <button class="upload-button book-upload" (click)="uploadBookData()">Upload Book Data</button>
+<div class="button-container">
+  <button class="upload-button book-upload" routerLink="uploadbooks"
+  >Upload books Data</button>
+
+
+  <button class="upload-button author-upload" routerLink="uploadauthors"
+  >Upload Author Data</button>
 </div>
 
-<app-upload-books></app-upload-books>
+<router-outlet></router-outlet>
 
-<app-upload-author></app-upload-author>
+
